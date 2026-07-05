@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎄 Christmas in July Invitation 🎄</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Poppins,sans-serif;
+    overflow-x:hidden;
+    color:white;
+    background:linear-gradient(180deg,#071c38,#103b63,#1c6f8d);
+    min-height:100vh;
+}
+
+.snow{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.snow span{
+    position:absolute;
+    display:block;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-10vh);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:40px 20px;
+    text-align:center;
+}
+
+.card{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:40px;
+    margin-top:40px;
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+h1{
+    font-family:'Mountains of Christmas',cursive;
+    font-size:4rem;
+    color:#fff;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    font-size:1.3rem;
+    color:#ffe08a;
+    margin-bottom:25px;
+}
+
+.details{
+    margin:25px 0;
+    font-size:1.15rem;
+    line-height:2;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin:35px 0;
+    flex-wrap:wrap;
+}
+
+.time-box{
+    background:white;
+    color:#0b3357;
+    width:90px;
+    padding:15px;
+    border-radius:15px;
+}
+
+.time-box h2{
+    font-size:2rem;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:16px 36px;
+    background:#d62828;
+    color:white;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#b51717;
+    transform:scale(1.05);
+}
+
+.footer{
+    margin-top:35px;
+    opacity:.85;
+    font-size:.95rem;
+}
+
+@media(max-width:700px){
+    h1{
+        font-size:2.8rem;
+    }
+
+    .card{
+        padding:25px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="snow" id="snow"></div>
+
+<div class="container">
+
+<div class="card">
+
+<h1>🎄 Christmas in July 🎄</h1>
+
+<div class="subtitle">
+You're Invited!
+</div>
+
+<p>
+Let's celebrate with festive food, ugly Christmas jumpers,
+holiday games, music, and plenty of laughs...
+even though it's the middle of winter!
+</p>
+
+<div class="details">
+📅 <strong>Date:</strong> Saturday, 25 July 2026<br>
+🕕 <strong>Time:</strong> 6:00 PM<br>
+📍 <strong>Location:</strong> Your Address Here<br>
+🎅 <strong>Dress Code:</strong> Christmas Colours or Ugly Christmas Sweater
+</div>
+
+<h2>Countdown</h2>
+
+<div class="countdown">
+
+<div class="time-box">
+<h2 id="days">0</h2>
+<div>Days</div>
+</div>
+
+<div class="time-box">
+<h2 id="hours">0</h2>
+<div>Hours</div>
+</div>
+
+<div class="time-box">
+<h2 id="minutes">0</h2>
+<div>Minutes</div>
+</div>
+
+<div class="time-box">
+<h2 id="seconds">0</h2>
+<div>Seconds</div>
+</div>
+
+</div>
+
+<a class="btn" href="mailto:your@email.com?subject=Christmas%20in%20July%20RSVP">
+🎁 RSVP Now
+</a>
+
+<div class="footer">
+We can't wait to celebrate with you! 🎄❄️
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+// Snowflakes
+const snow=document.getElementById("snow");
+
+for(let i=0;i<150;i++){
+
+let flake=document.createElement("span");
+
+flake.style.left=Math.random()*100+"%";
+
+let size=Math.random()*6+2;
+
+flake.style.width=size+"px";
+flake.style.height=size+"px";
+
+flake.style.opacity=Math.random();
+
+flake.style.animationDuration=(Math.random()*8+4)+"s";
+
+flake.style.animationDelay=(-Math.random()*10)+"s";
+
+snow.appendChild(flake);
+
+}
+
+// Countdown
+const eventDate=new Date("July 25, 2026 18:00:00").getTime();
+
+setInterval(function(){
+
+const now=new Date().getTime();
+
+const distance=eventDate-now;
+
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").innerHTML=Math.max(days,0);
+document.getElementById("hours").innerHTML=Math.max(hours,0);
+document.getElementById("minutes").innerHTML=Math.max(minutes,0);
+document.getElementById("seconds").innerHTML=Math.max(seconds,0);
+
+},1000);
+
+</script>
+
+</body>
+</html>
