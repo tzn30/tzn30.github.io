@@ -20,6 +20,7 @@ body{
     color:white;
     background:linear-gradient(180deg,#071c38,#103b63,#1c6f8d);
     min-height:100vh;
+    position:relative;
 }
 
 .snow{
@@ -30,6 +31,7 @@ body{
     left:0;
     pointer-events:none;
     overflow:hidden;
+    z-index:3;
 }
 
 .snow span{
@@ -51,11 +53,44 @@ body{
     }
 }
 
+.santa-bg{
+    position:fixed;
+    top:12%;
+    left:-320px;
+    font-size:4rem;
+    white-space:nowrap;
+    pointer-events:none;
+    z-index:0;
+    opacity:.9;
+    filter:drop-shadow(0 8px 10px rgba(0,0,0,.35));
+    animation:flySanta 18s linear infinite;
+}
+
+.santa-bg::after{
+    content:" ✨ ✨";
+    font-size:2rem;
+    opacity:.8;
+}
+
+@keyframes flySanta{
+    0%{
+        transform:translateX(-320px) translateY(20px) rotate(-3deg);
+    }
+    45%{
+        transform:translateX(55vw) translateY(-30px) rotate(4deg);
+    }
+    100%{
+        transform:translateX(calc(100vw + 360px)) translateY(15px) rotate(-2deg);
+    }
+}
+
 .container{
     max-width:900px;
     margin:auto;
     padding:40px 20px;
     text-align:center;
+    position:relative;
+    z-index:2;
 }
 
 .card{
@@ -137,12 +172,19 @@ h1{
     .card{
         padding:25px;
     }
+
+    .santa-bg{
+        top:8%;
+        font-size:2.8rem;
+        animation-duration:14s;
+    }
 }
 </style>
 </head>
 <body>
 
 <div class="snow" id="snow"></div>
+<div class="santa-bg" aria-hidden="true">🎅🦌🦌🛷</div>
 
 <div class="container">
 
@@ -155,7 +197,7 @@ You're Invited!
 </div>
 
 <p>
-Let's celebrate with festive food, ugly Christmas jumpers,
+Let's celebrate with festive food,
 holiday games, music, and plenty of laughs...
 even though it's the middle of winter!
 </p>
@@ -164,7 +206,7 @@ even though it's the middle of winter!
 📅 <strong>Date:</strong> Saturday, 25 July 2026<br>
 🕕 <strong>Time:</strong> 6:00 PM<br>
 📍 <strong>Location:</strong> Your Address Here<br>
-🎅 <strong>Dress Code:</strong> Christmas Colours or Ugly Christmas Sweater
+🎅 <strong>Dress Code:</strong> Christmas themed
 </div>
 
 <h2>Countdown</h2>
